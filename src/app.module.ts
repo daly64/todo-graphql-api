@@ -14,11 +14,11 @@ import { TodoModule } from './todo/todo.module';
       autoSchemaFile: 'schema.gql',
       installSubscriptionHandlers: true, // Enables subscriptions
     }),
-    MongooseModule.forRoot('mongodb://localhost:27017/todo-api'),
+    // MongooseModule.forRoot('mongodb://localhost:27017/todo-api'),
     TodoModule,
-    /*     MongooseModule.forRoot(
+         MongooseModule.forRoot(
       'mongodb+srv://daly:123123123@cluster0.tunc1.mongodb.net/todo-api',
-    ), */
+    ),
   ],
   controllers: [AppController],
   providers: [AppService],

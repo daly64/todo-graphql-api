@@ -21,7 +21,6 @@ export class TodoResolver {
 
   @Query(() => [Todo], { name: 'todos' })
   async findAll() {
-pubSub.publish('todos', { todos: this.todoService.findAll() });
      return this.todoService.findAll();
   }
 

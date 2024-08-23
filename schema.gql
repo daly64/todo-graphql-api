@@ -3,27 +3,55 @@
 # ------------------------------------------------------
 
 type Todo {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """Unique identifier for the todo"""
+  id: String!
+
+  """The title of the todo"""
+  title: String!
+
+  """The description of the todo"""
+  description: String!
+
+  """Whether the todo is completed or not"""
+  isDone: Boolean!
 }
 
 type Query {
-  todo(id: Int!): Todo!
+  todos: [Todo!]!
+  todo: Todo!
 }
 
 type Mutation {
   createTodo(createTodoInput: CreateTodoInput!): Todo!
   updateTodo(updateTodoInput: UpdateTodoInput!): Todo!
-  removeTodo(id: Int!): Todo!
+  removeTodo: Todo!
 }
 
 input CreateTodoInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """The title of the todo item. Required."""
+  title: String!
+
+  """The description of the todo item. Optional."""
+  description: String
+
+  """Whether the todo item is completed. Defaults to false."""
+  isDone: Boolean! = false
 }
 
 input UpdateTodoInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
+  """The title of the todo"""
+  title: String
+
+  """The description of the todo"""
+  description: String
+
+  """The completed of the todo"""
+  isDone: Boolean
+
+  """The id of the todo"""
+  id: String!
+}
+
+type Subscription {
+  todos: [Todo!]!
 }

@@ -12,6 +12,7 @@ import { TodoModule } from './todo/todo.module';
       driver: ApolloDriver,
       playground: true,
       autoSchemaFile: 'schema.gql',
+      installSubscriptionHandlers: true, // Enables subscriptions
     }),
     MongooseModule.forRoot('mongodb://localhost:27017/todo-api'),
     TodoModule,

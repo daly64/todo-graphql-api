@@ -12,15 +12,15 @@ export class TodoResolver {
   constructor(private readonly todoService: TodoService) {}
 
   @Mutation(() => Todo)
-  async createTodo(@Args('createTodoInput') createTodoInput: CreateTodoInput) {
+   createTodo(@Args('createTodoInput') createTodoInput: CreateTodoInput) {
     pubSub.publish('todos', {
-      todosUpdated: await this.todoService.findAll(),
+      todosUpdated: () => this.todoService.findAll(),
     });
     return this.todoService.create(createTodoInput);
   }
 
   @Query(() => [Todo], { name: 'todos' })
-  async findAll() {
+   findAll() {
      return this.todoService.findAll();
   }
 
@@ -30,13 +30,13 @@ export class TodoResolver {
   }
 
   @Mutation(() => Todo)
-  async updateTodo(@Args('updateTodoInput') updateTodoInput: UpdateTodoInput) {
+   updateTodo(@Args('updateTodoInput') updateTodoInput: UpdateTodoInput) {
 pubSub.publish('todos', { todos: this.todoService.findAll() });
     return this.todoService.update(updateTodoInput.id, updateTodoInput);
   }
 
   @Mutation(() => Todo)
-  async removeTodo(id: string) {
+   removeTodo(id: string) {
     pubSub.publish('todos', { todos: this.todoService.findAll() });
     return this.todoService.remove(id);
   }

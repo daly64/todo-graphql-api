@@ -8,16 +8,12 @@ import { TodoModule } from './todo/todo.module';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot({
+    GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       playground: true,
       autoSchemaFile: true, // <-- GraphQL schema generated from schema.gql',
       installSubscriptionHandlers: true, // Enables subscriptions
-      sortSchema: true,
-      cors: {
-        credentials: true,
-        origin: ['*'],
-      },
+      introspection: true, // GraphQL schema introspection
     }),
     // MongooseModule.forRoot('mongodb://localhost:27017/todo-api'),
     TodoModule,

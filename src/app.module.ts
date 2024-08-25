@@ -13,7 +13,7 @@ import { join } from 'path';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       playground: true,
-      autoSchemaFile: 'schema.gql',
+      autoSchemaFile: true,
       sortSchema: true,
       // autoSchemaFile: 'schema.gql', // <-- GraphQL schema generated from schema.gql',
       installSubscriptionHandlers: true, // Enables subscriptions

@@ -13,7 +13,6 @@ import { join } from 'path';
       driver: ApolloDriver,
       playground: true,
       // autoSchemaFile: 'schema.gql', // <-- GraphQL schema generated from schema.gql',
-      autoSchemaFile: join(process.cwd(), '/schema.gql'),
       installSubscriptionHandlers: true, // Enables subscriptions
     }),
     // MongooseModule.forRoot('mongodb://localhost:27017/todo-api'),

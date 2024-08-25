@@ -43,10 +43,10 @@ pubSub.publish('todos', { todos: this.todoService.findAll() });
 
   @Subscription(() => [Todo])
   todos() {
-    setTimeout(
-      () => pubSub.publish('todos', { todos: this.todoService.findAll() }),
-      1000,
-    );
+    // setTimeout(
+    //   () => pubSub.publish('todos', { todos: this.todoService.findAll() }),
+    //   1000,
+    // );
     return pubSub.asyncIterator('todos');
   }
 }

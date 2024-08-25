@@ -1,11 +1,10 @@
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
-import { GraphQLModule } from '@nestjs/graphql';
 import { TodoModule } from './todo/todo.module';
-import { join } from 'path';
 
 @Module({
   imports: [

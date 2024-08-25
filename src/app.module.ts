@@ -11,9 +11,8 @@ import { TodoModule } from './todo/todo.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       playground: true,
-      autoSchemaFile: true, // <-- GraphQL schema generated from schema.gql',
+      autoSchemaFile: 'schema.gql', // <-- GraphQL schema generated from schema.gql',
       installSubscriptionHandlers: true, // Enables subscriptions
-      introspection: true,
     }),
     // MongooseModule.forRoot('mongodb://localhost:27017/todo-api'),
     TodoModule,

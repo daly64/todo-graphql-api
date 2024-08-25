@@ -13,7 +13,11 @@ import { TodoModule } from './todo/todo.module';
       playground: true,
       autoSchemaFile: true, // <-- GraphQL schema generated from schema.gql',
       installSubscriptionHandlers: true, // Enables subscriptions
-      cors: true,
+      sortSchema: true,
+      cors: {
+        credentials: true,
+        origin: ['*'],
+      },
     }),
     // MongooseModule.forRoot('mongodb://localhost:27017/todo-api'),
     TodoModule,

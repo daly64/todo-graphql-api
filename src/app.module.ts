@@ -13,10 +13,11 @@ import { TodoModule } from './todo/todo.module';
       playground: true,
       autoSchemaFile: true, // <-- GraphQL schema generated from schema.gql',
       installSubscriptionHandlers: true, // Enables subscriptions
+      introspection: true,
     }),
     // MongooseModule.forRoot('mongodb://localhost:27017/todo-api'),
     TodoModule,
-         MongooseModule.forRoot(
+    MongooseModule.forRoot(
       'mongodb+srv://daly:123123123@cluster0.tunc1.mongodb.net/todo-api',
     ),
   ],

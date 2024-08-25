@@ -11,6 +11,7 @@ import { TodoModule } from './todo/todo.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       playground: true,
+      typePaths: ['./**/*.graphql'], // <-- add this
       autoSchemaFile: '/schema.gql', // <-- GraphQL schema generated from schema.gql',
       installSubscriptionHandlers: true, // Enables subscriptions
     }),

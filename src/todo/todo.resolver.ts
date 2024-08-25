@@ -12,15 +12,15 @@ export class TodoResolver {
   constructor(private readonly todoService: TodoService) {}
 
   @Mutation(() => Todo)
-   createTodo(@Args('createTodoInput') createTodoInput: CreateTodoInput) {
+  async createTodo(@Args('createTodoInput') createTodoInput: CreateTodoInput) {
     pubSub.publish('todos', {
-      todosUpdated: () => this.todoService.findAll(),
+      todosUpdated: await this.todoService.findAll(),
     });
     return this.todoService.create(createTodoInput);
   }
 
   @Query(() => [Todo], { name: 'todos' })
-   findAll() {
+  async findAll() {
      return this.todoService.findAll();
   }
 
@@ -30,23 +30,23 @@ export class TodoResolver {
   }
 
   @Mutation(() => Todo)
-   updateTodo(@Args('updateTodoInput') updateTodoInput: UpdateTodoInput) {
+  async updateTodo(@Args('updateTodoInput') updateTodoInput: UpdateTodoInput) {
 pubSub.publish('todos', { todos: this.todoService.findAll() });
     return this.todoService.update(updateTodoInput.id, updateTodoInput);
   }
 
   @Mutation(() => Todo)
-   removeTodo(id: string) {
+  async removeTodo(id: string) {
     pubSub.publish('todos', { todos: this.todoService.findAll() });
     return this.todoService.remove(id);
   }
 
   @Subscription(() => [Todo])
   todos() {
-    setTimeout(
-      () => pubSub.publish('todos', { todos: this.todoService.findAll() }),
-      1000,
-    );
+    // setTimeout(
+    //   () => pubSub.publish('todos', { todos: this.todoService.findAll() }),
+    //   1000,
+    // );
     return pubSub.asyncIterator('todos');
   }
 }

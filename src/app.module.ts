@@ -13,7 +13,6 @@ import { join } from 'path';
       driver: ApolloDriver,
       playground: true,
       autoSchemaFile: true,
-      typePaths: ['./**/*.gql'],
       definitions: {
         path: join(process.cwd(), 'src/schema.gql'),
       },

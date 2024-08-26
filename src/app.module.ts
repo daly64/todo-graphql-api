@@ -9,6 +9,10 @@ import { TodoModule } from './todo/todo.module';
 @Module({
   imports: [
     GraphQLModule.forRoot({
+      cors: {
+        origin: '*',
+        credentials: true,
+      },
       driver: ApolloDriver,
       autoSchemaFile: true,
       playground: true,

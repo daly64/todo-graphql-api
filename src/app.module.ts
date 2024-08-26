@@ -1,4 +1,4 @@
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { ApolloDriver } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -8,11 +8,10 @@ import { TodoModule } from './todo/todo.module';
 
 @Module({
   imports: [
-    //
     GraphQLModule.forRoot({
+      driver: ApolloDriver,
       autoSchemaFile: true,
       playground: true,
-      // autoSchemaFile: 'schema.gql', // <-- GraphQL schema generated from schema.gql',
       installSubscriptionHandlers: true, // Enables subscriptions
     }),
     // MongooseModule.forRoot('mongodb://localhost:27017/todo-api'),

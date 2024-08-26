@@ -1,4 +1,4 @@
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { ApolloDriver, ApolloDriverConfig, ApolloGatewayDriver, ApolloGatewayDriverConfigFactory } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -9,10 +9,11 @@ import { TodoModule } from './todo/todo.module';
 @Module({
   imports: [
     //
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
+    GraphQLModule.forRoot({
+      driver: ApolloGatewayDriver,
+      server: { cors: true },
       playground: true,
-      autoSchemaFile:true,
+      autoSchemaFile: true,
       // autoSchemaFile: 'schema.gql', // <-- GraphQL schema generated from schema.gql',
       installSubscriptionHandlers: true, // Enables subscriptions
     }),

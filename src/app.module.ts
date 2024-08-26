@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TodoModule } from './todo/todo.module';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { TodoModule } from './todo/todo.module';
         credentials: true,
       },
       driver: ApolloDriver,
-      autoSchemaFile: true,
+      autoSchemaFile: join(process.cwd(), 'schema.gql'),
       playground: true,
       installSubscriptionHandlers: true, // Enables subscriptions
     }),

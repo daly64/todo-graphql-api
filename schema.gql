@@ -2,56 +2,56 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Todo {
+  """Unique identifier for the todo"""
+  id: String!
+
+  """The title of the todo"""
+  title: String!
+
+  """The description of the todo"""
+  description: String!
+
+  """Whether the todo is completed or not"""
+  isDone: Boolean!
+}
+
+type Query {
+  todos: [Todo!]!
+  todo: Todo!
+}
+
+type Mutation {
+  createTodo(createTodoInput: CreateTodoInput!): Todo!
+  updateTodo(updateTodoInput: UpdateTodoInput!): Todo!
+  removeTodo: Todo!
+}
+
 input CreateTodoInput {
+  """The title of the todo item. Required."""
+  title: String!
+
   """The description of the todo item. Optional."""
   description: String
 
   """Whether the todo item is completed. Defaults to false."""
   isDone: Boolean! = false
-
-  """The title of the todo item. Required."""
-  title: String!
-}
-
-type Mutation {
-  createTodo(createTodoInput: CreateTodoInput!): Todo!
-  removeTodo: Todo!
-  updateTodo(updateTodoInput: UpdateTodoInput!): Todo!
-}
-
-type Query {
-  todo: Todo!
-  todos: [Todo!]!
-}
-
-type Subscription {
-  todos: [Todo!]!
-}
-
-type Todo {
-  """The description of the todo"""
-  description: String!
-
-  """Unique identifier for the todo"""
-  id: String!
-
-  """Whether the todo is completed or not"""
-  isDone: Boolean!
-
-  """The title of the todo"""
-  title: String!
 }
 
 input UpdateTodoInput {
+  """The title of the todo"""
+  title: String
+
   """The description of the todo"""
   description: String
-
-  """The id of the todo"""
-  id: String!
 
   """The completed of the todo"""
   isDone: Boolean
 
-  """The title of the todo"""
-  title: String
+  """The id of the todo"""
+  id: String!
+}
+
+type Subscription {
+  todos: [Todo!]!
 }

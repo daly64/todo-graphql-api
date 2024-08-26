@@ -10,7 +10,7 @@ import { TodoModule } from './todo/todo.module';
   imports: [
     //
     GraphQLModule.forRoot({
-      cors: {}, // pass options here
+      cors: {origin: true}, // pass options here
       driver: ApolloDriver,
       autoSchemaFile: true,
       // autoSchemaFile: 'schema.gql', // <-- GraphQL schema generated from schema.gql',

@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import { json } from 'stream/consumers';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule,{rawBody: true});
+  const app = await NestFactory.create(AppModule,{bodyParser: true});
 
    app.enableCors();
 
